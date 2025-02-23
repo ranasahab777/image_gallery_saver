@@ -9,7 +9,10 @@ buildscript {
     }
 
     dependencies {
+        // Match your Flutter project's AGP version if it's different
         classpath 'com.android.tools.build:gradle:7.3.0'
+
+        // Use a modern Kotlin Gradle plugin version
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -25,20 +28,27 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    // Required for newer Android Gradle Plugin
+    namespace "com.image_gallery_saver"
+
+    // Align this with your main Flutter project's compileSdkVersion
+    compileSdkVersion 33
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
     defaultConfig {
         minSdkVersion 16
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     lintOptions {
         disable 'InvalidPackage'
     }
 }
 
 dependencies {
+    // Match Kotlin stdlib version to the Kotlin Gradle plugin version
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
